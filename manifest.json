@@ -1,0 +1,9 @@
+{
+	"id": "chatgpt-formatter",
+	"name": "ChatGPT Formatter",
+	"version": "0.1.0",
+	"minAppVersion": "0.12.0",
+	"description": "ChatGPT出力を自動整形するObsidianプラグイン",
+	"author": "Shiori Takanashi",
+	"main": "main.js"
+}
