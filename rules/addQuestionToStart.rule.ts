@@ -11,19 +11,19 @@ export const addQuestionToStartRule: FormatterRule = { // Renamed from addQuesti
     apply: (text) => {
         console.log("addQuestionToStartRule: apply method called. Input text:", text); // Updated console log
         // すでに「# 質問」で始まっている場合は何もしない
-        if (text.trimStart().startsWith('# 質問')) {
+        if (text.trimStart().startsWith('# ❓ 質問')) {
             return text;
         }
 
         // 改行で分割
-        const lines = text.split('\\n');
+        const lines = text.split('\n');
 
         // 先頭が空行の場合は2行目に追加
         if (lines[0].trim() === '') {
-            lines.splice(1, 0, '# 質問');
+            lines.splice(1, 0, '# ❓ 質問');
         } else {
             // そうでなければ先頭に追加
-            lines.unshift('# 質問');
+            lines.unshift('# ❓ 質問');
         }
 
         return lines.join('\n');

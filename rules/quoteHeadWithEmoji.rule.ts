@@ -1,12 +1,12 @@
 import { FormatterRule } from "../formatter.types";
 import { RuleCategory } from "./categories";
 
-export const quoteQuestionBlockRule: FormatterRule = {
-    id: "quote-question-block",
-    name: "質問ブロックを引用形式にする",
-    description: "'# 質問' を含むブロック全体を引用符で囲みます。",
+export const quoteHeadWithEmojiRule: FormatterRule = {
+    id: "quote-head-with-emoji",
+    name: "絵文字付きの見出しライン/ブロックを引用形式に",
+    description: "",
     enabled: true,
-    order: 3, // 「質問を追加」ルールの後に実行されるように調整
+    order: 6,
     category: RuleCategory.FORMAT,
     apply: (text) => {
         console.log("quoteQuestionBlockRule: apply method called.");

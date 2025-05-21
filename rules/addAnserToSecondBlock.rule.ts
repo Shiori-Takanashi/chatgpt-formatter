@@ -4,7 +4,7 @@ import { RuleCategory } from "./categories";
 export const addAnswerToSecondBlockRule: FormatterRule = { // Renamed from addQuestion
     id: "add-answer-to-second-block", // Changed from "add-question"
     name: "h1=回答を2番目のブロックに追加", // Changed from "h1=質問を追加"
-    description: "2番目のブロックの先頭に「# 回答」を追加します", // Changed description
+    description: "2番目のブロックの先頭に「# 🤖 回答」を追加します", // Changed description
     enabled: true,
     order: 4, // This order might need adjustment depending on other rules
     category: RuleCategory.CONTENT,
@@ -22,7 +22,7 @@ export const addAnswerToSecondBlockRule: FormatterRule = { // Renamed from addQu
         const firstBlock = blocks[0];
         let secondBlock = blocks[1];
         const restOfBlocks = blocks.slice(2);
-        const answerHead = "# 回答";
+        const answerHead = "# 🤖 回答";
 
         // 2番目のブロックの先頭に回答見出しを追加
         // すでに # 回答 で始まっている場合は追加しない
