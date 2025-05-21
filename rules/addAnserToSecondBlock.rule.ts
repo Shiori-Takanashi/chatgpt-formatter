@@ -6,7 +6,7 @@ export const addAnswerToSecondBlockRule: FormatterRule = { // Renamed from addQu
     name: "h1=回答を2番目のブロックに追加", // Changed from "h1=質問を追加"
     description: "2番目のブロックの先頭に「# 🤖 回答」を追加します", // Changed description
     enabled: true,
-    order: 4, // This order might need adjustment depending on other rules
+    order: 5, // 回答を2番目のブロックに追加
     category: RuleCategory.CONTENT,
     apply: (text: string): string => { // Ensure string is always returned
         console.log("addAnswerToSecondBlockRule: apply method called. Input text:", text);

@@ -3,6 +3,7 @@ export { addQuestionToStartRule } from "./addQuestionToStart.rule";
 export { mergeEmptyLines } from "./mergeEmptyLines.rule";
 export { moveCursorToStartRule } from "./move-cursor-to-start.rule";
 export { quoteAnswerBlockRule } from "./quoteAnswerBlock.rule";
+export { quoteHeadWithEmojiRule } from "./quoteHeadWithEmoji.rule";
 export { quoteQuestionBlockRule } from "./quoteQuestionBlock.rule";
 export { removeEmojiUnderEmojiRule } from "./removeEmojiUnderEmoji.rule";
 export { selectAllRule } from "./select-all.rule";

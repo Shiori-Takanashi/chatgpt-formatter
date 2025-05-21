@@ -15,7 +15,7 @@ export const removeEmojiUnderEmojiRule: FormatterRule = {
     name: "特定パターンの3行目から絵文字とスペースを削除",
     description: "# 絵文字、空行、# 絵文字の行が続く場合の処理。",
     enabled: true,
-    order: 5,
+    order: 7, // 特定パターンの3行目から絵文字とスペースを削除
     category: RuleCategory.CONTENT,
     apply: (text) => {
         const lines = text.split('\n');

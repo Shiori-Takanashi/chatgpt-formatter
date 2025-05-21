@@ -6,7 +6,7 @@ export const addQuestionToStartRule: FormatterRule = { // Renamed from addQuesti
     name: "h1=質問を先頭に追加", // Changed from "h1=回答を追加"
     description: "テキスト全体の先頭に「# 質問」を追加します", // Changed description
     enabled: true,
-    order: 2, // カーソル移動と全選択の後に実行
+    order: 2, // 質問を先頭に追加
     category: RuleCategory.CONTENT,
     apply: (text) => {
         console.log("addQuestionToStartRule: apply method called. Input text:", text); // Updated console log

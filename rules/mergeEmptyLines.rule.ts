@@ -6,7 +6,7 @@ export const mergeEmptyLines: FormatterRule = {
     name: "連続する空行を1つにまとめる", // Changed from "h1=回答を追加"
     description: "連続する空行を1つにまとめる処理。", // Changed description
     enabled: true,
-    order: 5, // 最後に実行
+    order: 9999, // 連続空行をまとめる
     category: RuleCategory.CONTENT,
     apply: (text) => {
         if (text === "") return ""; // Handle empty string input explicitly

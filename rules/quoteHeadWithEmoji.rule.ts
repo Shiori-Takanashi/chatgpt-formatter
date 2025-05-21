@@ -1,29 +1,34 @@
 import { FormatterRule } from "../formatter.types";
 import { RuleCategory } from "./categories";
+import { ALL_EMOJIS } from "../services/all-emoji";
+
+function escapeRegExp(str: string): string {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+const emojiPatternPart = ALL_EMOJIS.map(escapeRegExp).join('|');
+const linePattern = new RegExp(`^(#{1,6})(\\s)(${emojiPatternPart})(\\s)(.*)$`);
 
 export const quoteHeadWithEmojiRule: FormatterRule = {
     id: "quote-head-with-emoji",
     name: "絵文字付きの見出しライン/ブロックを引用形式に",
     description: "",
-    enabled: true,
-    order: 6,
+    enabled: false,
+    order: 500, // 絵文字付き見出しブロックを引用
     category: RuleCategory.FORMAT,
     apply: (text) => {
-        console.log("quoteQuestionBlockRule: apply method called.");
-        const blocks = text.split('\n\n'); // ダブル改行でブロックに分割
-        const newBlocks = blocks.map(block => {
-            if (block.includes('# ❓ 質問')) {
-                console.log("quoteQuestionBlockRule: Found block with '# 質問'. Block content:", block);
-                const lines = block.split('\n');
-                const quotedLines = lines.map(line => `> ${line}`);
-                const newBlock = quotedLines.join('\n');
-                console.log("quoteQuestionBlockRule: Quoted block content:", newBlock);
-                return newBlock;
+        // ブロックごとに分割（空行2つで区切る）
+        const blocks = text.split(/\n{2,}/);
+        for (let b = 0; b < blocks.length; b++) {
+            const lines = blocks[b].split('\n');
+            // ブロックのすべての行が絵文字付き見出しなら引用化
+            if (lines.length > 0 && lines.some(line => line.match(linePattern) && line.startsWith('#'))) {
+                for (let l = 0; l < lines.length; l++) {
+                    lines[l] = '> ' + lines[l];
+                }
+                blocks[b] = lines.join('\n');
             }
-            return block;
-        });
-        const result = newBlocks.join('\n\n');
-        console.log("quoteQuestionBlockRule: Final result:", result);
-        return result;
+        }
+        return blocks.join('\n\n');
     }
 };

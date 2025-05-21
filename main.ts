@@ -31,13 +31,6 @@ class ChatGPTFormatterSettingTab extends PluginSettingTab {
                         .setValue(rule.enabled)
                         .onChange(async (value) => {
                             await configManager.updateRuleConfig(rule.id, { enabled: value });
-                        }))
-                    .addSlider(slider => slider
-                        .setLimits(1, 20, 1)
-                        .setValue(rule.order)
-                        .setDynamicTooltip()
-                        .onChange(async (value) => {
-                            await configManager.updateRuleConfig(rule.id, { order: value });
                         }));
 
                 // ルールに特有の設定があれば追加
@@ -106,16 +99,7 @@ export default class ChatGPTFormatterPlugin extends Plugin {
         });
         console.log("format-all-text command registered.");
 
-        // 個別のフォーマットコマンド（設定から呼び出せるように残しておく）
-        this.addCommand({
-            id: "format-selection",
-            name: "選択テキストをフォーマット",
-            editorCallback: (editor) => {
-                const selected = editor.getSelection();
-                const formatted = format(selected);
-                editor.replaceSelection(formatted);
-            }
-        });
+
 
         // 設定タブの追加
         this.addSettingTab(new ChatGPTFormatterSettingTab(this.app, this));

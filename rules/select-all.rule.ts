@@ -7,7 +7,7 @@ export const selectAllRule: FormatterRule = {
     name: "Alt+Cでフォーマット処理を実行",
     description: "Alt+Cホットキーで全テキストに対してフォーマット処理を実行します（UI表示用）",
     enabled: true,
-    order: 1, // カーソル移動の次に実行
+    order: 1, // 全選択
     category: RuleCategory.STRUCTURE,
     apply: (text) => {
         // このルールはUI上でのみ意味を持ち、実際のテキスト変換は行いません
