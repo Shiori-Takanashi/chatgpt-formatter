@@ -1,5 +1,5 @@
 import { FormatterRule } from "../formatter.types";
-import { RuleCategory } from "./categories";
+import { RuleCategory } from "../services/categories";
 import { ALL_EMOJIS } from "../services/all-emoji";
 
 function escapeRegExp(str: string): string {

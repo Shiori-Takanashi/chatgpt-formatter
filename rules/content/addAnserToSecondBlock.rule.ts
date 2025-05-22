@@ -1,5 +1,5 @@
 import { FormatterRule } from "../formatter.types";
-import { RuleCategory } from "./categories";
+import { RuleCategory } from "../services/categories";
 
 export const addAnswerToSecondBlockRule: FormatterRule = {
     id: "add-answer-to-second-block",

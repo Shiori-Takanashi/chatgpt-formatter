@@ -1,5 +1,5 @@
 import { FormatterRule } from "../formatter.types";
-import { RuleCategory } from "./categories";
+import { RuleCategory } from "../services/categories";
 
 export const mergeEmptyLines: FormatterRule = {
     id: "merge-empty-lines", // Changed from "add-answer"
