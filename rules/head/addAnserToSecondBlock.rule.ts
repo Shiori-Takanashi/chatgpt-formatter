@@ -5,7 +5,7 @@ export const addAnswerToSecondBlockRule: FormatterRule = {
     id: "add-answer-to-second-block",
     name: "h1=回答を2番目のブロックに追加",
     description: "2番目のブロックの先頭に「# ❗回答」を追加します",
-    enabled: true,
+    enabled: false,
     order: 4,
     category: RuleCategory.HEAD,
     apply: (text: string): string => {

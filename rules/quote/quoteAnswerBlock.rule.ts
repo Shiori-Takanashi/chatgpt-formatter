@@ -5,7 +5,7 @@ export const quoteAnswerBlockRule: FormatterRule = {
     id: "quote-answer-block",
     name: "回答ブロックを引用形式にする",
     description: "'# 回答' を含むブロック全体を引用符で囲みます。",
-    enabled: true,
+    enabled: false,
     order: 5, // 「回答を追加」ルールの後に実行されるように調整
     category: RuleCategory.QUOTE,
     apply: (text) => {

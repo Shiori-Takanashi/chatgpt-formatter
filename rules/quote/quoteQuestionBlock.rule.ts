@@ -5,7 +5,7 @@ export const quoteQuestionBlockRule: FormatterRule = {
     id: "quote-question-block",
     name: "質問ブロックを引用形式にする",
     description: "'# 質問' を含むブロック全体を引用符で囲みます。",
-    enabled: true,
+    enabled: false,
     order: 3,
     category: RuleCategory.QUOTE,
     apply: (text: string): string => {
