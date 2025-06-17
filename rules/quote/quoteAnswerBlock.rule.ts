@@ -1,5 +1,5 @@
-import { FormatterRule } from "../formatter.types";
-import { RuleCategory } from "./categories";
+import { FormatterRule } from "../../formatter.types";
+import { RuleCategory } from "..../../services/categories";
 
 export const quoteAnswerBlockRule: FormatterRule = {
     id: "quote-answer-block",
@@ -7,7 +7,7 @@ export const quoteAnswerBlockRule: FormatterRule = {
     description: "'# 回答' を含むブロック全体を引用符で囲みます。",
     enabled: true,
     order: 5, // 「回答を追加」ルールの後に実行されるように調整
-    category: RuleCategory.FORMAT,
+    category: RuleCategory.QUOTE,
     apply: (text) => {
         const blocks = text.split('\n\n');
         const LinesInFirstBlock = blocks[1].split('\n');

@@ -1,5 +1,5 @@
-import { FormatterRule } from "../formatter.types";
-import { RuleCategory } from "../services/categories";
+import { FormatterRule } from "../../formatter.types";
+import { RuleCategory } from "..../../services/categories";
 
 export const addQuestionToStartRule: FormatterRule = {
     id: "add-question-to-start",
@@ -7,7 +7,7 @@ export const addQuestionToStartRule: FormatterRule = {
     description: "テキスト全体の先頭に「# ❓質問」を追加します",
     enabled: true,
     order: 2,
-    category: RuleCategory.CONTENT,
+    category: RuleCategory.HEAD,
     apply: (text: string): string => {
         const questionHead = "# ❓質問";
         return questionHead + '\n' + text;

@@ -1,4 +1,4 @@
-import { RuleCategory } from "./rules/categories";
+import { RuleCategory } from "./services/categories";
 
 export interface FormatterRule {
     id: string;          // 一意の識別子

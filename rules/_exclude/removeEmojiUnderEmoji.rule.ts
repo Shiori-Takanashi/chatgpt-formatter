@@ -1,6 +1,8 @@
-import { FormatterRule } from "../formatter.types";
-import { RuleCategory } from "../services/categories";
-import { ALL_EMOJIS } from "../services/all-emoji";
+import { FormatterRule } from "../../formatter.types";
+import { RuleCategory } from "..../../services/categories";
+import { ALL_EMOJIS } from "../../services/all-emoji";
+
+// このファイルはビルド・エクスポート対象外
 
 function escapeRegExp(str: string): string {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -16,7 +18,7 @@ export const removeEmojiUnderEmojiRule: FormatterRule = {
     description: "# 絵文字、空行、# 絵文字の行が続く場合の処理。",
     enabled: false,
     order: 6,
-    category: RuleCategory.CONTENT,
+    category: undefined as any,
     apply: (text) => {
         const lines = text.split('\n');
         const newLines: string[] = [];

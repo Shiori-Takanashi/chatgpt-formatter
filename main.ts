@@ -2,7 +2,7 @@ import { Plugin, PluginSettingTab, Setting, App } from "obsidian";
 import { format } from "./formatter";
 import { ruleManager } from "./services/rule-manager";
 import { configManager } from "./services/config-manager";
-import { RuleCategory } from "./rules/categories";
+import { RuleCategory } from "./services/categories";
 
 // 設定タブの定義
 class ChatGPTFormatterSettingTab extends PluginSettingTab {
@@ -22,7 +22,7 @@ class ChatGPTFormatterSettingTab extends PluginSettingTab {
         categories.forEach(category => {
             containerEl.createEl('h2', { text: `${category}` });
 
-            const rules = ruleManager.getRulesByCategory(category);
+            const rules = ruleManager.getRulesByCategory(category as string);
             rules.forEach(rule => {
                 const setting = new Setting(containerEl)
                     .setName(rule.name)

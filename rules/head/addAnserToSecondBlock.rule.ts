@@ -1,5 +1,5 @@
-import { FormatterRule } from "../formatter.types";
-import { RuleCategory } from "../services/categories";
+import { FormatterRule } from "../../formatter.types";
+import { RuleCategory } from "..../../services/categories";
 
 export const addAnswerToSecondBlockRule: FormatterRule = {
     id: "add-answer-to-second-block",
@@ -7,7 +7,7 @@ export const addAnswerToSecondBlockRule: FormatterRule = {
     description: "2番目のブロックの先頭に「# ❗回答」を追加します",
     enabled: true,
     order: 4,
-    category: RuleCategory.CONTENT,
+    category: RuleCategory.HEAD,
     apply: (text: string): string => {
         const blocks = text.split('\n\n');
         const answerHead = "# ❗回答";

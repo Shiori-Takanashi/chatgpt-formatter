@@ -1,5 +1,7 @@
-import { FormatterRule } from "../formatter.types";
-import { RuleCategory } from "../services/categories";
+import { FormatterRule } from "../../formatter.types";
+import { RuleCategory } from "..../../services/categories";
+
+// このファイルはビルド・エクスポート対象外
 
 export const mergeEmptyLines: FormatterRule = {
     id: "merge-empty-lines", // Changed from "add-answer"
@@ -7,7 +9,7 @@ export const mergeEmptyLines: FormatterRule = {
     description: "連続する空行を1つにまとめる処理。", // Changed description
     enabled: false,
     order: 7, // 最後に実行
-    category: RuleCategory.CONTENT,
+    category: undefined as any,
     apply: (text) => {
         if (text === "") return ""; // Handle empty string input explicitly
 
