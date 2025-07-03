@@ -3,10 +3,7 @@ import { RuleCategory } from "../../services/categories";
 
 export const addSeparatorToHeadingsRule: FormatterRule = {
     id: "add-separator-to-headings",
-    name: "見出しにセパレーターを追加",
-    description: "1番目の見出しの下に---を、それ以外の見出しの上に---を追加します",
-    enabled: false,
-    order: 1, // 早めに実行
+    enabled: true,
     category: RuleCategory.HEAD,
     apply: (text: string): string => {
         const lines = text.split('\n');
@@ -35,11 +32,37 @@ export const addSeparatorToHeadingsRule: FormatterRule = {
                 if (!firstHeadingFound) {
                     // 1番目の見出し：見出しの後に---を追加
                     result.push(line);
-                    result.push('---');
+                    // 次の非空行がセパレーターでないかチェック
+                    let shouldAddSeparator = true;
+                    for (let j = i + 1; j < lines.length; j++) {
+                        const nextLine = lines[j];
+                        if (nextLine.trim() !== '') {
+                            if (nextLine.match(/^\s*---\s*$/)) {
+                                shouldAddSeparator = false;
+                            }
+                            break;
+                        }
+                    }
+                    if (shouldAddSeparator) {
+                        result.push('---');
+                    }
                     firstHeadingFound = true;
                 } else {
                     // 2番目以降の見出し：見出しの前に---を追加
-                    result.push('---');
+                    // 直前の非空行がセパレーターでないかチェック
+                    let shouldAddSeparator = true;
+                    for (let j = result.length - 1; j >= 0; j--) {
+                        const prevLine = result[j];
+                        if (prevLine.trim() !== '') {
+                            if (prevLine.match(/^\s*---\s*$/)) {
+                                shouldAddSeparator = false;
+                            }
+                            break;
+                        }
+                    }
+                    if (shouldAddSeparator) {
+                        result.push('---');
+                    }
                     result.push(line);
                 }
             } else {

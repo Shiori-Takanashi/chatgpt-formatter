@@ -31,13 +31,6 @@ class ChatGPTFormatterSettingTab extends PluginSettingTab {
                         .setValue(rule.enabled)
                         .onChange(async (value) => {
                             await configManager.updateRuleConfig(rule.id, { enabled: value });
-                        }))
-                    .addSlider(slider => slider
-                        .setLimits(1, 20, 1)
-                        .setValue(rule.order)
-                        .setDynamicTooltip()
-                        .onChange(async (value) => {
-                            await configManager.updateRuleConfig(rule.id, { order: value });
                         }));
 
                 // ルールに特有の設定があれば追加

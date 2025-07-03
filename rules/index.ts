@@ -6,3 +6,5 @@ export { addQuestionToStartRule } from "./head/addQuestionToFirstBlock.rule";
 export { addSeparatorToHeadingsRule } from "./head/addSeparatorToHeadings.rule";
 export { quoteAnswerBlockRule } from "./quote/quoteAnswerBlock.rule";
 export { quoteQuestionBlockRule } from "./quote/quoteQuestionBlock.rule";
+export { removeQuoteLinesRule } from "./quote/removeQuoteLines.rule";
+export { convertHeadingsToQuotesRule } from "./quote/convertHeadingsToQuotes.rule";

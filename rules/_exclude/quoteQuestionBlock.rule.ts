@@ -3,10 +3,7 @@ import { RuleCategory } from "..../../services/categories";
 
 export const quoteQuestionBlockRule: FormatterRule = {
     id: "quote-question-block",
-    name: "質問ブロックを引用形式にする",
-    description: "'# 質問' を含むブロック全体を引用符で囲みます。",
-    enabled: false,
-    order: 3,
+    enabled: true,
     category: RuleCategory.QUOTE,
     apply: (text: string): string => {
         const blocks = text.split('\n\n');

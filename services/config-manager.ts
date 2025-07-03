@@ -1,5 +1,6 @@
 import { ruleManager } from './rule-manager';
 import { Plugin } from 'obsidian';
+import { ruleMetadata } from './rule-metadata';
 
 interface RuleConfig {
     enabled: boolean;
@@ -63,7 +64,7 @@ export class ConfigManager {
             const rules = ruleManager.getAllRules().reduce((acc, rule) => {
                 acc[rule.id] = {
                     enabled: rule.enabled,
-                    order: rule.order,
+                    order: rule.order || 0,
                     options: rule.options
                 };
                 return acc;
@@ -81,7 +82,7 @@ export class ConfigManager {
         const rules = ruleManager.getAllRules().reduce((acc, rule) => {
             acc[rule.id] = {
                 enabled: rule.enabled,
-                order: rule.order,
+                order: rule.order || 0,
                 options: rule.options
             };
             return acc;
@@ -102,6 +103,22 @@ export class ConfigManager {
 
         await this.saveConfig();
         return true;
+    }
+
+    public getRuleConfig(id: string) {
+        const userConfig = this.config.rules[id] || {};
+        const metadata = ruleMetadata[id] || {} as any;
+        return {
+            enabled: userConfig.enabled !== undefined ? userConfig.enabled : true,
+            order: userConfig.order !== undefined ? userConfig.order : metadata.order,
+            name: metadata.name,
+            description: metadata.description,
+            options: userConfig.options || {}
+        };
+    }
+
+    public getAllRulesMetadata() {
+        return ruleMetadata;
     }
 }
 

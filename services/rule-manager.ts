@@ -1,5 +1,6 @@
 import { FormatterRule } from "../formatter.types";
 import * as rules from "../rules";
+import { ruleMetadata } from "./rule-metadata";
 
 class RuleManager {
     private rules: Map<string, FormatterRule> = new Map();
@@ -11,6 +12,13 @@ class RuleManager {
     private loadAllRules(): void {
         const allRules = Object.values(rules) as FormatterRule[];
         allRules.forEach(rule => {
+            // メタデータに基づいて name, description, order を設定
+            const meta = ruleMetadata[rule.id];
+            if (meta) {
+                rule.name = meta.name;
+                rule.description = meta.description;
+                rule.order = meta.order;
+            }
             this.rules.set(rule.id, rule);
         });
     }
@@ -19,7 +27,7 @@ class RuleManager {
     public getEnabledRules(): FormatterRule[] {
         return Array.from(this.rules.values())
             .filter(rule => rule.enabled)
-            .sort((a, b) => a.order - b.order);
+            .sort((a, b) => (a.order || 0) - (b.order || 0));
     }
 
     // ルールをIDで取得
@@ -40,13 +48,13 @@ class RuleManager {
     public getRulesByCategory(category: string): FormatterRule[] {
         return Array.from(this.rules.values())
             .filter(rule => rule.category === category)
-            .sort((a, b) => a.order - b.order);
+            .sort((a, b) => (a.order || 0) - (b.order || 0));
     }
 
     // 全ルールの取得
     public getAllRules(): FormatterRule[] {
         return Array.from(this.rules.values())
-            .sort((a, b) => a.order - b.order);
+            .sort((a, b) => (a.order || 0) - (b.order || 0));
     }
 
     // ルールの順序変更

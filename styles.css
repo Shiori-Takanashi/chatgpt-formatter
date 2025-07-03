@@ -6,3 +6,57 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
+
+/* Obsidian設定画面でのスライドバー（水平スクロール）を無効化 */
+.chatgpt-formatter-settings {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+/* トグルスイッチの横長バーを短くする */
+.chatgpt-formatter-settings .checkbox-container {
+    width: 40px !important;
+    min-width: 40px !important;
+}
+
+.chatgpt-formatter-settings .setting-item-control .checkbox-container {
+    flex-shrink: 0;
+}
+
+/* 設定項目のレイアウト調整 */
+.chatgpt-formatter-settings .setting-item-control {
+    justify-content: flex-end;
+    min-width: 50px;
+}
+
+/* 設定項目のレイアウト調整 */
+.chatgpt-formatter-settings .setting-item {
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.chatgpt-formatter-settings .setting-item-name {
+    white-space: normal;
+    word-break: break-word;
+}
+
+.chatgpt-formatter-settings .setting-item-description {
+    white-space: normal;
+    word-break: break-word;
+    max-width: 100%;
+}
+
+/* ルール一覧のレイアウト調整 */
+.chatgpt-formatter-rule-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.chatgpt-formatter-rule-item .setting-item-control {
+    flex-wrap: wrap;
+}

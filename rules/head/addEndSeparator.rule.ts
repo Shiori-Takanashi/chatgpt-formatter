@@ -3,17 +3,26 @@ import { RuleCategory } from "../../services/categories";
 
 export const addEndSeparatorRule: FormatterRule = {
     id: "add-end-separator",
-    name: "テキスト終了時にセパレーターを追加",
-    description: "全てのテキストが終了したら改行2つと---を追加します",
-    enabled: false,
-    order: 100, // 最後に実行
+    enabled: true,
     category: RuleCategory.HEAD,
     apply: (text: string): string => {
-        // 末尾の空白行を削除
-        const trimmedText = text.trimEnd();
+        // テキストが空でない場合のみチェック
+        if (text.trim().length > 0) {
+            // 末尾から逆順に非空行を探してセパレーターかどうかチェック
+            const lines = text.split('\n');
+            for (let i = lines.length - 1; i >= 0; i--) {
+                const line = lines[i];
+                if (line.trim() !== '') {
+                    // 最後の非空行がセパレーターの場合は追加しない
+                    if (line.match(/^\s*---\s*$/)) {
+                        return text;
+                    }
+                    break;
+                }
+            }
 
-        // テキストが空でない場合のみセパレーターを追加
-        if (trimmedText.length > 0) {
+            // セパレーターがない場合は追加
+            const trimmedText = text.trimEnd();
             return trimmedText + '\n\n---';
         }
 
