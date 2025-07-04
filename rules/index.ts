@@ -4,6 +4,8 @@ export { addAnswerToSecondBlockRule } from "./head/addAnserToSecondBlock.rule";
 export { addEndSeparatorRule } from "./head/addEndSeparator.rule";
 export { addQuestionToStartRule } from "./head/addQuestionToFirstBlock.rule";
 export { addSeparatorToHeadingsRule } from "./head/addSeparatorToHeadings.rule";
+export { removeTextBeforeFirstHeadingRule } from "./head/removeTextBeforeFirstHeading.rule";
+export { removeLastSectionWithoutHeadingRule } from "./head/removeLastSectionWithoutHeading.rule";
 export { quoteAnswerBlockRule } from "./quote/quoteAnswerBlock.rule";
 export { quoteQuestionBlockRule } from "./quote/quoteQuestionBlock.rule";
 export { removeQuoteLinesRule } from "./quote/removeQuoteLines.rule";
